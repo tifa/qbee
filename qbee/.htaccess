@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^static/(.*)\.js$ /static/js/$1.php [L]
+RewriteRule ^static/(.*)\.css$ /static/css/$1.php [L]
+
+RewriteRule ^([A-Za-z0-9-]+)/?$ $1.php [L]
+RewriteRule ^activities/([0-9]+)/([A-Za-z0-9-]+)/?$ /activities?year=$1&activity=$2 [QSA,L]
+
+RewriteRule ^([A-Za-z0-9-]+)/?$ $1.php [L]
+RewriteRule ^log/([a-z]+)/?$ /log?type=$1 [QSA,L]
+RewriteRule ^log/([a-z]+)/([0-9]+)/?$ /log?type=$1&year=$2 [QSA,L]

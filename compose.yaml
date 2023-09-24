@@ -1,0 +1,23 @@
+---
+services:
+  qbee:
+    image: qbee-site
+    container_name: site
+    depends_on:
+      - db
+    hostname: ${HOSTNAME:-locahost}
+    ports:
+      - 80:80
+    volumes:
+      - ./qbee:/var/www/qbee
+      - ./assets/httpd/httpd.conf:/etc/apache2/sites-available/qbee.conf
+
+  db:
+    image: qbee-db
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: qbee
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
