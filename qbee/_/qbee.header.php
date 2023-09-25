@@ -51,21 +51,21 @@
 			'Alegreya Sans SC:300', // copyright text
 		);
 		if (count($fonts) > 0) {
-			echo '<link rel="stylesheet" href="http://fonts.googleapis.com/css?family='.str_replace(' ','+',implode('|',$fonts)).'" />';
+			echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family='.str_replace(' ','+',implode('|',$fonts)).'" />';
 		}
 		echo '<!--[if IE]>';
 			foreach($fonts as $font) {
-				echo "<link href=\"http://fonts.googleapis.com/css?family=".str_replace(' ','+',$font)."\" rel=\"stylesheet\" type=\"text/css\" />\n";
+				echo "<link href=\"https://fonts.googleapis.com/css?family=".str_replace(' ','+',$font)."\" rel=\"stylesheet\" type=\"text/css\" />\n";
 			}
 		echo '<![endif]-->';
 		?>
 		<link rel="stylesheet" href="/static/fontello.css">
 		<link rel="stylesheet" href="/static/qbee.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="/static/escape.js"></script>
 		<script src="/static/html5.js"></script>
 		<!--[if IE lt 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
 	<body>
