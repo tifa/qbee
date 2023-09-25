@@ -5,6 +5,8 @@ services:
     container_name: site
     depends_on:
       - db
+    environment:
+      EMAIL: ${EMAIL:-qbee@localhost}
     hostname: ${HOSTNAME:-localhost}
     ports:
       - 80:80
