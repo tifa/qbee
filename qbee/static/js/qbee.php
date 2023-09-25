@@ -42,7 +42,11 @@ $(window).on('load', function() {
 });
 $(document).on('ready', function() {
 	$('div.gallery img').tipsy({gravity: 'nw'});
-	$('a').tipsy({gravity: 'new'});
+	$('a[title]').each(function() {
+		if (!$(this).find('img[original-title]').length) {
+			$(this).tipsy({gravity: 'nw'});
+		}
+	});
 
 	$('textarea').each(function() {
 		thisHeight = $(this).height();
