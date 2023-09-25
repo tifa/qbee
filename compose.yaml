@@ -5,7 +5,7 @@ services:
     container_name: site
     depends_on:
       - db
-    hostname: ${HOSTNAME:-locahost}
+    hostname: ${HOSTNAME:-localhost}
     ports:
       - 80:80
     volumes:
