@@ -178,7 +178,7 @@ if (@$_GET['year'] == 2013 && $_GET['activity'] == 'egg-hunt') {
 			$mail->From = $display_email;
 			$mail->FromName = $display_name . ' #' . $display_bee_id;
 			$mail->AddReplyTo($display_email, $display_name . ' #' . $display_bee_id);
-			$mail->AddAddress('qbee@' . getenv('HOSTNAME'));
+			$mail->AddAddress(getenv('EMAIL'));
 			if ($_FILES['image']['name'] != '') $mail->AddAttachment($_FILES['image']['tmp_name'], $display_bee_id . '-' . webName($display_name) . '.' . $action_ext);
 			$mail->Subject = 'The Quilting Bee ' . $current_single . ' trade request';
 			$msg = $current_single_capital . ' #' . $display_bee_id;
@@ -201,7 +201,7 @@ if (@$_GET['year'] == 2013 && $_GET['activity'] == 'egg-hunt') {
 	}
 	echo '<h1>' . $subtitle . '</h1>';
 	if ($show) {
-		echo '<p>If you have a <em>q*bee approved</em> ' . $current_single . ' and woud like to trade with me, fill out this form or email me with the same information at <a href="' . htmlChars('mailto:qbee@' . getenv('HOSTNAME')) . '">' . htmlChars('qbee@' . getenv('HOSTNAME')) . '</a>! :D</p>';
+		echo '<p>If you have a <em>q*bee approved</em> ' . $current_single . ' and woud like to trade with me, fill out this form or email me with the same information at <a href="' . htmlChars('mailto:' . getenv('EMAIL')) . '">' . htmlChars(getenv('EMAIL')) . '</a>! :D</p>';
 	}
 	if ($error) {
 		echo '<p class="error">' . $error . '</p>';

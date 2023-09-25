@@ -5,7 +5,7 @@ include('_/qbee.header.php');
 <h1>Welcome to my q*bee quilt!</h1>
 <p>I'm an official <a href="http://theqbee.net/refer.php?beenum=163">Quilting Bee</a> member! If you are also a member
 and would like to trade patches, please <a href="/trade">fill out the trading form</a> or
-<a href="<?php echo htmlChars('mailto:qbee@' . getenv('HOSTNAME')); ?>">email me</a> with your patch and bee ID!</p>
+<a href="<?php echo htmlChars('mailto:' . getenv('EMAIL')); ?>">email me</a> with your patch and bee ID!</p>
 <?php
 $washed = 0;
 if (!$mysqli->select_db('qbee')) {

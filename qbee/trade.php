@@ -9,7 +9,7 @@ $show = true;
 $submitted = $focus = $success = $error = false;
 if (isset($_POST['submit']) && $_POST['submit'] == 'Trade!') {
 	$submitted = true;
-	$fatal = 'An error occurred and your request could not be processed. Please <a href="' . htmlChars('mailto:qbee@' . getenv('HOSTNAME')) . '">email me</a> if you would still like to trade. Sorry for the inconvenience!';
+	$fatal = 'An error occurred and your request could not be processed. Please <a href="' . htmlChars('mailto:' . getenv('EMAIL')) . '">email me</a> if you would still like to trade. Sorry for the inconvenience!';
 	if ($_POST['patch_url'] == 'http://') {
 		$_POST['patch_url'] = '';
 	} elseif ($_POST['patch_url'] != '' && !preg_match('/^http:\/\//i', $_POST['patch_url'])) {
@@ -114,7 +114,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Trade!') {
 				$mail->From = $_POST['email'];
 				$mail->FromName = $_POST['name'] . ' #' . $_POST['bee_id'];
 				$mail->AddReplyTo($_POST['email'], $_POST['name'] . ' #' . $_POST['bee_id']);
-				$mail->AddAddress('qbee@' . getenv('HOSTNAME'));
+				$mail->AddAddress(getenv('EMAIL'));
 				if ($_FILES['patch']['name'] != '') $mail->AddAttachment($_FILES['patch']['tmp_name'], $_POST['bee_id'] . '-' . slug($_POST['name']) . '.' . $ext);
 				$mail->Subject = 'The Quilting Bee trade request';
 				$msg = $_POST['about'] . "\n";
@@ -144,7 +144,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Trade!') {
 }
 
 if ($show) {
-	echo '<p>If you would like to trade patches with me, fill out the form below. You can alternatively email me at <a href="' . htmlChars('mailto:qbee@' . getenv('HOSTNAME')) . '">' . htmlChars('qbee@' . getenv('HOSTNAME')) . '</a> with your name, bee ID, and patch. :3</p>';
+	echo '<p>If you would like to trade patches with me, fill out the form below. You can alternatively email me at <a href="' . htmlChars('mailto:' . getenv('EMAIL')) . '">' . htmlChars(getenv('EMAIL')) . '</a> with your name, bee ID, and patch. :3</p>';
 }
 
 if ($error) {
