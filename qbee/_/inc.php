@@ -15,9 +15,7 @@ spl_autoload_register(function($class) {
 /* --------- MySQL connect --------- */
 /* --------------------------------- */
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-$config = parse_ini_file("$root/.env");
-if (!$mysqli = new mysqli($config['MYSQL_HOST'], $config['MYSQL_USER'], $config['MYSQL_PASSWORD'], $config['MYSQL_DB'])) {
+if (!$mysqli = new mysqli(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB'))) {
 	error(1, $mysqli->error);
 } elseif (!$mysqli->set_charset('utf8')) {
     error(2, $mysqli->error);

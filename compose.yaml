@@ -9,6 +9,10 @@ services:
     entrypoint: /app/entrypoint.sh
     environment:
       EMAIL: ${EMAIL}
+      MYSQL_DB: ${MYSQL_DB}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
     hostname: ${HOSTNAME}
     labels:
       traefik.enable: true
