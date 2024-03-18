@@ -13,12 +13,16 @@ This was one of my earlier websites when my whole dev world revolved around the 
 
 These were as much as I could salvage. A lot of content has since been lost. :(
 
-## Local Setup
+## Setup
 
-Run `make` to build and open up a local version of this site.
+Set up [vps][repo-vps] with reverse proxy.
+
+Run `make`.
 
 
 [qbee-1]: https://web.archive.org/web/20050421074957/http://www.supersonicsquirrel.net:80/qbee/
 [qbee-2]: https://web.archive.org/web/20070225160054/http://theqbee.net/
 
-[live]: https://qbee.tifa.io
+[live]: https://qbee.tifa.dev
+
+[repo-vps]: https://github.com/tifa/vps

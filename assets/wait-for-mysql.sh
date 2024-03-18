@@ -8,7 +8,7 @@ symbols="⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏"
 index=1
 
 while :; do
-  if mysql -h"mysql" -uadmin -ppassword -e 'SELECT 1' > /dev/null 2>&1; then
+  if mysql -h"mysql" -u${MYSQL_USER} -p${MYSQL_PWD} -e 'SELECT 1' > /dev/null 2>&1; then
     break
   fi
 

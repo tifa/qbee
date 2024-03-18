@@ -1,19 +1,22 @@
-FROM php:8.2.10-apache-bookworm as site
+FROM ubuntu:22.04
 
+ARG DEBIAN_FRONTEND=noninteractive
+
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        default-mysql-client=1.1.0 \
+        apache2 \
+        default-mysql-client \
+        php8.1 \
+        php8.1-mysql \
     && rm -rf /var/lib/apt/lists/*
 
-RUN rm /etc/apache2/sites-enabled/* \
-    && ln -s /etc/apache2/sites-available/qbee.conf /etc/apache2/sites-enabled/qbee.conf \
-    && docker-php-ext-install mysqli \
+RUN rm -r /var/www/html/*
+COPY ./qbee /var/www/html
+COPY ./.env /var/www/html/.env
+COPY ./assets/apache2/000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN chown -R www-data:www-data /var/www/html/ \
     && a2enmod rewrite
 
-COPY ./assets/wait-for-mysql.sh /tmp/wait-for-mysql.sh
-RUN chmod +x /tmp/wait-for-mysql.sh
-
-
-FROM mysql:8.1.0 as db
-
-COPY ./assets/db/schema.sql /docker-entrypoint-initdb.d/schema.sql
+COPY ./assets /app
+RUN chmod +x -R /app/

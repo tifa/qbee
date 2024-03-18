@@ -1,11 +1,12 @@
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+DROP DATABASE IF EXISTS `qbee`;
+CREATE DATABASE `qbee`;
 
-DROP DATABASE `qbee`;
-CREATE DATABASE IF NOT EXISTS `qbee`;
+GRANT ALL PRIVILEGES ON qbee.* TO 'qbee'@'%' WITH GRANT OPTION;
 
 USE `qbee`;
 
-CREATE TABLE IF NOT EXISTS `settings` (
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
     timezone VARCHAR(255) NOT NULL,
     `qbee_thanks` VARCHAR(255),
     `qbee_official` VARCHAR(4),
@@ -17,7 +18,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 INSERT INTO `settings` (timezone, qbee_thanks, qbee_official, qbee_mine, qbee_163, qbee_wash)
     VALUES ('America/New_York', 'gif', 'gif', 'gif', 'gif', '2012-12-23');
 
-CREATE TABLE IF NOT EXISTS `categories` (
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `folder` VARCHAR(255) NOT NULL,
     `qbee_official` VARCHAR(4),
@@ -28,7 +30,8 @@ INSERT INTO `categories` (folder)
     VALUES ("patches"), ("about"), ("special"), ("thanks"), ("donations"), ("events"), ("colonies")
 ;
 
-CREATE TABLE IF NOT EXISTS `galleries` (
+DROP TABLE IF EXISTS `galleries`;
+CREATE TABLE `galleries` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `folder` VARCHAR(255) NOT NULL,
     `clear_url` VARCHAR(255),
@@ -97,7 +100,8 @@ INSERT INTO `galleries` (folder, clear_url, bg, ext, columns, spacing, border, r
     ("old-shrooms", NULL, NULL, NULL, 2, true, false, false, 2),
     ("2013-egg-hunt", NULL, NULL, NULL, 2, true, false, false, 6);
 
-CREATE TABLE IF NOT EXISTS `images` (
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE `images` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `gallery_id` INT NOT NULL,
     `bee_id` INT,
@@ -548,7 +552,8 @@ INSERT INTO `images` (gallery_id, name, ext) VALUES -- 3: events, 2013 egg hunt
     (34, "6th", "gif"),
     (34, "12th", "gif");
 
-CREATE TABLE IF NOT EXISTS `errors` (
+DROP TABLE IF EXISTS `errors`;
+CREATE TABLE `errors` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `code` INT NOT NULL,
     `description` TEXT,
@@ -558,7 +563,8 @@ CREATE TABLE IF NOT EXISTS `errors` (
     `refer` TEXT
 );
 
-CREATE TABLE IF NOT EXISTS `journal` (
+DROP TABLE IF EXISTS `journal`;
+CREATE TABLE `journal` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
     `bee_id` INT NOT NULL,

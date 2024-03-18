@@ -15,7 +15,9 @@ spl_autoload_register(function($class) {
 /* --------- MySQL connect --------- */
 /* --------------------------------- */
 
-if (!$mysqli = new mysqli('mysql', 'admin', 'password', 'qbee')) {
+$root = $_SERVER['DOCUMENT_ROOT'];
+$config = parse_ini_file("$root/.env");
+if (!$mysqli = new mysqli($config['MYSQL_HOST'], $config['MYSQL_USER'], $config['MYSQL_PASSWORD'], $config['MYSQL_DB'])) {
 	error(1, $mysqli->error);
 } elseif (!$mysqli->set_charset('utf8')) {
     error(2, $mysqli->error);
