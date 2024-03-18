@@ -15,6 +15,12 @@ These were as much as I could salvage. A lot of content has since been lost. :(
 
 ## Setup
 
+Save `.env.example` as `.env` and modify the configs.
+
+```sh
+cp .env.example .env
+```
+
 Set up [vps][repo-vps] with reverse proxy.
 
 Run `make`.
