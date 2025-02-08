@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS `qbee`;
 CREATE DATABASE `qbee`;
 
-GRANT ALL PRIVILEGES ON qbee.* TO 'qbee'@'%' WITH GRANT OPTION;
-
 USE `qbee`;
 
 DROP TABLE IF EXISTS `settings`;

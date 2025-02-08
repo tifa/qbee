@@ -1,5 +1,5 @@
 networks:
-  tifa:
+  service:
     external: true
 
 services:
@@ -19,11 +19,6 @@ services:
       traefik.http.routers.qbee.rule: Host(`${HOSTNAME}`)
       traefik.http.routers.qbee.entrypoints: websecure
       traefik.http.routers.qbee.tls.certresolver: letsencrypt
-      traefik.http.services.qbee.loadbalancer.server.port: 80
     networks:
-      - tifa
+      - service
     restart: always
-
-volumes:
-  tifa_mysql:
-    external: true

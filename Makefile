@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := open
 
-ACTIVATE = . venv/bin/activate;
+ACTIVATE = . venv/bin/activate &&
 ASSETS = $(shell find assets -type f -name '*')
 FILES = $(shell find qbee -type f -name '*.php')
 PROJECT_NAME = qbee
@@ -22,13 +22,13 @@ endef
 include .env
 
 .git/hooks/pre-commit:
-	$(ACTIVATE) pre-commit install
-	@touch $@
+	@test -d .git && $(ACTIVATE) pre-commit install && touch $@ || true
 
 venv: venv/.touchfile .git/hooks/pre-commit
 venv/.touchfile: requirements.txt
-	test -d venv || virtualenv venv
-	$(ACTIVATE) pip install -Ur requirements.txt
+	test -d venv || python3 -m venv venv
+	@$(ACTIVATE) pip install uv
+	@$(ACTIVATE) uv pip install -Ur requirements.txt
 	@touch $@
 
 .PHONY: help

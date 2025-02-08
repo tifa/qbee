@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 
 # import db
-MYSQL_PWD=${MYSQL_PASSWORD} mysql -u ${MYSQL_USER} -h mysql < /app/db/data.sql
+mysql -u ${MYSQL_USER} -h ${MYSQL_HOST} -p${MYSQL_PASSWORD} -e "SOURCE /app/db/data.sql"
 
 # start apache
 apache2ctl -D BACKGROUND
