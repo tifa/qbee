@@ -8,17 +8,18 @@ services:
     container_name: qbee
     entrypoint: /app/entrypoint.sh
     environment:
-      EMAIL: ${EMAIL}
-      MYSQL_DB: ${MYSQL_DB}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-    hostname: ${HOSTNAME}
+      EMAIL: ${EMAIL:?}
+      MYSQL_DB: ${MYSQL_DB:?}
+      MYSQL_HOST: ${MYSQL_HOST:?}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?}
+      MYSQL_USER: ${MYSQL_USER:?}
+    hostname: ${HOSTNAME:?}
     labels:
       traefik.enable: true
-      traefik.http.routers.qbee.rule: Host(`${HOSTNAME}`)
+      traefik.http.routers.qbee.rule: Host(`${HOSTNAME:?}`)
       traefik.http.routers.qbee.entrypoints: websecure
       traefik.http.routers.qbee.tls.certresolver: letsencrypt
+      traefik.http.services.qbee.loadbalancer.server.port: 80
     networks:
       - service
     restart: always
